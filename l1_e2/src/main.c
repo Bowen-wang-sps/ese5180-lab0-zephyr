@@ -13,12 +13,16 @@
 
 /* The devicetree node identifier for the "led0" alias. */
 #define LED0_NODE DT_ALIAS(led0)
+#define led5180_NODE DT_ALIAS(led5180)
+#define BUTTON_NODE DT_ALIAS(sw0)
+
 
 /*
  * A build error on this line means your board is unsupported.
  * See the sample documentation for information on how to fix this.
  */
-static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
+static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(led5180_NODE, gpios);
+static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(BUTTON_NODE, gpios);
 
 int main(void)
 {
@@ -34,15 +38,36 @@ int main(void)
 		return 0;
 	}
 
+	if (!gpio_is_ready_dt(&button)) {
+		return 0;
+	}
+
+	ret = gpio_pin_configure_dt(&button, GPIO_INPUT);
+	if (ret < 0) {
+		return 0;
+	}
+
+	bool last_state = false;
+
 	while (1) {
-		ret = gpio_pin_toggle_dt(&led);
-		if (ret < 0) {
+		
+		int button_state = gpio_pin_get_dt(&button);
+		if (button_state < 0) {
 			return 0;
 		}
 
-		led_state = !led_state;
-		printf("LED state: %s\n", led_state ? "ON" : "OFF");
-		k_msleep(SLEEP_TIME_MS);
+		if (button_state && !last_state) {
+
+			ret = gpio_pin_toggle_dt(&led);
+			if (ret < 0) {
+				return 0;
+			}
+
+			led_state = !led_state;
+			printf("LED state: %s\n", led_state ? "ON" : "OFF");
+		}
+		last_state = button_state;
+		k_msleep(20);
 	}
 	return 0;
 }
