@@ -7,6 +7,12 @@
 #include <stdio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
+#ifdef CONFIG_SUM_PRINT
+#include "sum_printk.h"
+#endif
+#ifdef CONFIG_SUM_LOG
+#include "sum_log.h"
+#endif
 
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS   2000
@@ -23,6 +29,11 @@
  */
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(led5180_NODE, gpios);
 static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(BUTTON_NODE, gpios);
+
+int sum(int a, int b)
+{
+    return a + b;
+}
 
 int main(void)
 {
@@ -46,6 +57,16 @@ int main(void)
 	if (ret < 0) {
 		return 0;
 	}
+
+	int a = 2;
+    int b = 3;
+    int result = sum(a, b);
+	#ifdef CONFIG_SUM_PRINT
+		sum_printk(a, b, result);
+	#endif
+	#ifdef CONFIG_SUM_LOG
+		sum_log(a, b, result);
+	#endif
 
 	bool last_state = false;
 
@@ -71,3 +92,4 @@ int main(void)
 	}
 	return 0;
 }
+

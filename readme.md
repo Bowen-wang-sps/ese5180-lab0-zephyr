@@ -11,3 +11,11 @@
 ![1789684569779](image/readme/1789684569779.png)
 
 ![1789685172880](image/readme/1789685172880.png)
+
+(6.1) Take screenshots of console output for both builds:
+● CONFIG_SUM_PRINT=y → result printed with printk().
+● CONFIG_SUM_LOG=y → result printed with the Logger (include hexdump).
+
+![1789784404395](image/readme/1789784404395.png)
+
+![1789784170821](image/readme/1789784170821.png)
