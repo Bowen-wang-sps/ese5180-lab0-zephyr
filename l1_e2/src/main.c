@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <zephyr/kernel.h>
 #include <zephyr/drivers/gpio.h>
+#include <zephyr/drivers/i2c.h>
+
 #ifdef CONFIG_SUM_PRINT
 #include "sum_printk.h"
 #endif
@@ -22,6 +24,12 @@
 #define led5180_NODE DT_ALIAS(led5180)
 #define BUTTON_NODE DT_ALIAS(button5180)
 
+#define BME280_NODE DT_NODELABEL(bme280)
+
+static const struct i2c_dt_spec bme280 = I2C_DT_SPEC_GET(BME280_NODE);
+
+#define BME280_CTRL_MEAS 0xF4
+#define BME280_TEMP_MSB  0xFA
 
 /*
  * A build error on this line means your board is unsupported.
@@ -64,6 +72,17 @@ int main(void)
 	#endif
 
 	bool last_state = false;
+
+	uint8_t ctrl_meas[2] = {
+		BME280_CTRL_MEAS,
+		0x27
+	};
+
+	int i2c_ret = i2c_write_dt(&bme280, ctrl_meas, sizeof(ctrl_meas));
+
+	if (i2c_ret != 0) {
+		printk("fail\n");
+	}
 
 	while (1) {
 		

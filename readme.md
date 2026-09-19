@@ -23,3 +23,6 @@
 (7.2) Take screenshots of the testing outputs (laptop) in the terminal.
 
 ![1789788392218](image/readme/1789788392218.png)
+
+(8.1) Print out the temperature. Take screenshots of your logging output. Commit your Zephyr application to
+your GitHub repository
