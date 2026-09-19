@@ -1,1 +1,1 @@
-void sum_printk(int a, int b, int result);
+int sum_printk(int a, int b);

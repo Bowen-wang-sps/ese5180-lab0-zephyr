@@ -19,3 +19,7 @@
 ![1789784404395](image/readme/1789784404395.png)
 
 ![1789784170821](image/readme/1789784170821.png)
+
+(7.2) Take screenshots of the testing outputs (laptop) in the terminal.
+
+![1789788392218](image/readme/1789788392218.png)

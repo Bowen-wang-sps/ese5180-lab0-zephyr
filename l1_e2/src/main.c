@@ -30,10 +30,6 @@
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(led5180_NODE, gpios);
 static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET(BUTTON_NODE, gpios);
 
-int sum(int a, int b)
-{
-    return a + b;
-}
 
 int main(void)
 {
@@ -60,12 +56,11 @@ int main(void)
 
 	int a = 2;
     int b = 3;
-    int result = sum(a, b);
 	#ifdef CONFIG_SUM_PRINT
-		sum_printk(a, b, result);
+		sum_printk(a, b);
 	#endif
 	#ifdef CONFIG_SUM_LOG
-		sum_log(a, b, result);
+		sum_log(a, b);
 	#endif
 
 	bool last_state = false;
