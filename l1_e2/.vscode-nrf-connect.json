@@ -1,0 +1,17 @@
+{
+  "toolchainPath": "c:\\ncs\\toolchains\\dcbdc366a1",
+  "sdkPath": "c:\\ncs\\v3.4.0",
+  "board": "nrf7002dk/nrf5340/cpuapp/ns",
+  "boardDir": "c:\\ncs\\v3.4.0\\zephyr\\boards\\nordic\\nrf7002dk",
+  "boardDirs": [
+    "c:\\ncs\\v3.4.0\\zephyr\\boards\\nordic\\nrf7002dk"
+  ],
+  "optimizations": "none",
+  "cmakeArgs": [],
+  "confFiles": [],
+  "buildDirectory": "build",
+  "kconfigFragments": [],
+  "snippets": [],
+  "dtcOverlays": [],
+  "extraDtcOverlays": []
+}

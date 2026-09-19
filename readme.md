@@ -4,7 +4,7 @@
 | ---------------- | ---------------------------- |
 | Bowen Wang       | wangbw@engineering.upenn.edu |
 
-**GitHub Repository URL: https://github.com/Bowen-wang-sps/ese5180-lab0-zephyr.git**
+**GitHub Repository URL: [https://github.com/Bowen-wang-sps/ese5180-lab0-zephyr.git](https://github.com/Bowen-wang-sps/ese5180-lab0-zephyr.git)**
 
 ## (3.1) Build and Flash using only west commands and not the GUI. Show the terminal prints by embedding ascreenshot in your README.m
 
@@ -26,3 +26,5 @@
 
 (8.1) Print out the temperature. Take screenshots of your logging output. Commit your Zephyr application to
 your GitHub repository
+
+![1789807054367](image/readme/1789807054367.png)
